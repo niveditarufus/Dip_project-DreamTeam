@@ -2,11 +2,16 @@ import cv2
 from PIL import Image
 import numpy as np
 from matplotlib import pyplot as plt
+#importing images
 img1 = cv2.imread('figure1.png',0)
 cx,cy = img1.shape
+#generate a hanning window
 hanw = cv2.createHanningWindow((cx,cy),cv2.CV_64F)
 
+
+
 img1 = img1 * hanw
+#Do fft
 f1 = np.fft.fft2(img1)
 fshift1 = np.fft.fftshift(f1)
 magnitude_spectrum1 = np.log(np.abs(fshift1) +1)
