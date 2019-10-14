@@ -14,7 +14,7 @@ img1 = img1 * hanw
 #Do fft
 f1 = np.fft.fft2(img1)
 fshift1 = np.fft.fftshift(f1)
-magnitude_spectrum1 = 10*np.log(np.abs(fshift1) +1)
+magnitude_spectrum1 = 15*np.log(np.abs(fshift1) +1)
 polar_map1= cv2.linearPolar(magnitude_spectrum1, (cx/2,cy/2), cx/np.log(cx), flags=cv2.INTER_LINEAR+cv2.WARP_FILL_OUTLIERS)
 cv2.imwrite('./output/mag1.png',magnitude_spectrum1)
 
@@ -23,7 +23,7 @@ img2 = cv2.imread('./input images/figure2.png',0)
 img2 = img2 * hanw
 f2 = np.fft.fft2(img2)
 fshift2 = np.fft.fftshift(f2)
-magnitude_spectrum2 =10* np.log(np.abs(fshift2) +1)
+magnitude_spectrum2 =15* np.log(np.abs(fshift2) +1)
 polar_map2= cv2.linearPolar(magnitude_spectrum2, (cx/2,cy/2), cx/np.log(cx), flags=cv2.INTER_LINEAR+cv2.WARP_FILL_OUTLIERS)
 cv2.imwrite('./output/mag2.png',magnitude_spectrum2)
 
