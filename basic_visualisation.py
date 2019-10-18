@@ -28,19 +28,7 @@ cv2.imwrite('./output/polar_map1.png',polar_map1)
 
 #read the image and find polar map using the linearPolar function to the magnitude spectrum
 
-img2 = cv2.imread('./input images/figure2.png',0)
-img2 = img2 * hanw
-f2 = np.fft.fft2(img2)
-fshift2 = np.fft.fftshift(f2)
-magnitude_spectrum2 = np.abs(fshift2)
-log_magnitude_spectrum2 =10* np.log(np.abs(fshift2) +1)
-magnitude_spectrum2 =15* np.log(np.abs(fshift2) +1)
-polar_map2= cv2.linearPolar(magnitude_spectrum2, (cx/2,cy/2), cx/np.log(cx), flags=cv2.INTER_LINEAR+cv2.WARP_FILL_OUTLIERS)
-log_polar_map2= cv2.linearPolar(log_magnitude_spectrum2, (cx/2,cy/2), cx/np.log(cx), flags=cv2.INTER_LINEAR+cv2.WARP_FILL_OUTLIERS)
-cv2.imwrite('./output/log_mag2.png',log_magnitude_spectrum2)
-cv2.imwrite('./output/mag2.png',magnitude_spectrum2)
-cv2.imwrite('./output/log_polar2.png',log_polar_map2)
-cv2.imwrite('./output/polar_map2.png',polar_map2)
+
 
 R = fshift1 * np.ma.conjugate(fshift2)
 R /= np.absolute(R)
