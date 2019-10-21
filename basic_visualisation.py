@@ -46,8 +46,3 @@ cv2.imwrite('./output/polar_map2.png',polar_map2)
 
 # to get rotation.
 
-R = fshift1 * np.ma.conjugate(fshift2)
-R /= np.absolute(R)
-r = np.fft.fftshift(np.fft.ifft(R).real)
-r = np.asarray(r)
-r=r.reshape(cx,cy)
