@@ -2,7 +2,7 @@ import cv2
 from PIL import Image
 import numpy as np
 from matplotlib import pyplot as plt
-img1 = cv2.imread('figure1.png',0)
+img1 = cv2.imread('./input images/figure1.png',0)
 cx,cy = img1.shape
 hanw = cv2.createHanningWindow((cx,cy),cv2.CV_64F)
 
@@ -13,7 +13,7 @@ magnitude_spectrum1 = np.log(np.abs(fshift1) +1)
 polar_map1= cv2.logPolar(magnitude_spectrum1, (cx/2,cy/2), cx/np.log(cx), flags=cv2.INTER_LINEAR+cv2.WARP_FILL_OUTLIERS)
 
 
-img2 = cv2.imread('figure2.png',0)
+img2 = cv2.imread('./input images/figure2.png',0)
 img2 = img2 * hanw
 f2 = np.fft.fft2(img2)
 fshift2 = np.fft.fftshift(f2)
