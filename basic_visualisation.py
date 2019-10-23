@@ -10,6 +10,8 @@ hanw = cv2.createHanningWindow((cx,cy),cv2.CV_64F)
 
 
 
+#read the image and find polar map using the linearPolar function to the magnitude spectrum
+
 img1 = img1 * hanw
 #Do fft
 f1 = np.fft.fft2(img1)
@@ -26,6 +28,8 @@ cv2.imwrite('./output/polar_map1.png',polar_map1)
 
 
 
+#read the image and find polar map using the linearPolar function to the magnitude spectrum
+
 img2 = cv2.imread('./input images/figure2.png',0)
 img2 = img2 * hanw
 f2 = np.fft.fft2(img2)
@@ -40,8 +44,10 @@ cv2.imwrite('./output/mag2.png',magnitude_spectrum2)
 cv2.imwrite('./output/log_polar2.png',log_polar_map2)
 cv2.imwrite('./output/polar_map2.png',polar_map2)
 
+# to get rotation.
 R = fshift1 * np.ma.conjugate(fshift2)
 R /= np.absolute(R)
 r = np.fft.fftshift(np.fft.ifft(R).real)
 r = np.asarray(r)
 r=r.reshape(cx,cy)
+
