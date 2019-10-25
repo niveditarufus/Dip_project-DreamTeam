@@ -10,7 +10,7 @@ hanw = cv2.createHanningWindow((cx,cy),cv2.CV_64F)
 
 
 
-#read the image and find polar map using the linearPolar function to the magnitude spectrum
+#read the image and find polar map using the logPolar function to the magnitude spectrum
 
 img1 = img1 * hanw
 #Do fft
@@ -28,7 +28,7 @@ cv2.imwrite('./output/polar_map1.png',polar_map1)
 
 
 
-#read the image and find polar map using the linearPolar function to the magnitude spectrum
+#read the image and find polar map using the logPolar function to the magnitude spectrum
 
 img2 = cv2.imread('./input images/figure2.png',0)
 img2 = img2 * hanw
