@@ -9,11 +9,7 @@ np.set_printoptions(threshold=sys.maxsize)
 
 
 def merge_images(file1, file2,x, y,theta):
-    """Merge two images into one, displayed side by side
-    :param file1: path to first image file
-    :param file2: path to second image file
-    :return: the merged Image object
-    """
+    
     image1 = Image.open(file1)
     image2 = Image.open(file2)
 

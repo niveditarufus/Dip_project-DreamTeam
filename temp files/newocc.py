@@ -113,8 +113,6 @@ for sequence in sequences:
 		im2.save('/home/nive/newimages_plane/figure'+str(i)+'.png')
 		print(i)
 
-
-		
 		# mayavi.mlab.show()
 		# plt.figure()
 		# ax = plt.subplot(111, projection='3d')
