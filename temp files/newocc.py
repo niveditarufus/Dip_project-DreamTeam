@@ -11,7 +11,6 @@ np.set_printoptions(threshold=sys.maxsize)
 res = 0.1
 side_range=(-50., 50.)
 fwd_range = (-50., 50.)
-# Basedir where the dataset exsits
 basedir = '/home/nive/space' 
 
 sequences = ['00']#,'01','02','03','04','05','06','07','08','09','10']
@@ -28,9 +27,7 @@ def get_theta_between_planes(a1,a2,b1,b2):
 
 
 def scale_to_255(a, min, max, dtype=np.uint8):
-    """ Scales an array of values from specified min, max range to 0-255
-        Optionally specify the data type of the output (default is uint8)
-    """
+    
     return (((a - min) / float(max - min)) * 255).astype(dtype)
 
 def shortest_distance(x1, y1, z1, a, b, c):  
@@ -50,8 +47,8 @@ def projection(a,b,c,x,y,z):
 
 
 for sequence in sequences:	
-	dataset = pykitti.odometry(basedir,sequence)	 # Reads KITTI odometry dataset
-	num_frames = len(dataset.poses) # Number of frames in the particular sequence 
+	dataset = pykitti.odometry(basedir,sequence)	 
+	num_frames = len(dataset.poses) 
 	print(num_frames) 
 
 	for i in range(num_frames):
