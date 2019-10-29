@@ -1,7 +1,6 @@
 
 # coding: utf-8
-
-# In[1]:
+# to find the adaptive filtering
 
 
 import cv2  
