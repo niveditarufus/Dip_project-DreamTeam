@@ -26,7 +26,6 @@ def get_theta_between_planes(a1,a2,b1,b2):
 	return(math.acos(d/(sq1*sq2)))
 
 
-
 def scale_to_255(a, min, max, dtype=np.uint8):
     
     return (((a - min) / float(max - min)) * 255).astype(dtype)
@@ -78,30 +77,19 @@ for sequence in sequences:
 		theta_plane=np.empty(num_frames-1)
 		fit[i] = np.array([temp1.dot(b)])
 
-		# print(fit.shape)
-		# errors = b - (A.dot(np.transpose(fit[i])))
-		# residual = np.linalg.norm(errors)
-		# print(fit[i,0])
-
+		
 		if(i>0):
 			theta_plane = get_theta_between_planes(fit[i-1,0],fit[i,0],fit[i-1,1],fit[i,1])
 
 		projected =[]
 		perpendicular_distance=[]
-		# for element in velo_xy:
-		# 	perpendicular_distance.append(shortest_distance(element[0],element[1],element[2],fit[0],fit[1],fit[2]))
-		# perpendicular_distance = np.asarray(perpendicular_distance)
-		# perpendicular_distance = np.clip(a=perpendicular_distance,a_min=-1.6,a_max=1.6)
+		
 		pixel_values = scale_to_255(velo_xy[:,2],min=height_range[0],max=height_range[1])
 		for element in velo_xy:
 			projected.append(projection(fit[i,0],fit[i,1],fit[i,2],element[0],element[1],element[2]))
 
 		projected = np.asarray(projected)
 
-		# fig = mayavi.mlab.figure(bgcolor=(0, 0, 0), size=(640, 360))
-		# mayavi.mlab.points3d(projected[:,0], projected[:,1], projected[:,2],mode="point",colormap='spectral', # 'bone', 'copper', 'gnuplot'# color=(0, 1, 0),
-		# 					figure=fig,)
-		# mayavi.mlab.show()
 		x_img = (-projected[:,1] / res).astype(np.int32)  # x axis is -y in LIDAR
 		y_img = (-projected[:,0] / res).astype(np.int32)
 		x_img -= int(np.floor(side_range[0] / res))
@@ -114,41 +102,4 @@ for sequence in sequences:
 		im2.save('/home/nive/newimages_plane/figure'+str(i)+'.png')
 		print(i)
 
-		# mayavi.mlab.show()
-		# plt.figure()
-		# ax = plt.subplot(111, projection='3d')
-		# ax.scatter(projected[:,0], projected[:,1], projected[:,2], color='b')
-
-		# xlim = ax.get_xlim()
-		# ylim = ax.get_ylim()
-		# X,Y = np.meshgrid(np.arange(xlim[0], xlim[1]),
-		#                   np.arange(ylim[0], ylim[1]))
-		# Z = np.zeros(X.shape)
-		# for r in range(X.shape[0]):
-		#     for c in range(X.shape[1]):
-		#         Z[r,c] = fit[0] * X[r,c] + fit[1] * Y[r,c] + fit[2]
-		# ax.plot_wireframe(X,Y,Z, color='k')
-
-		# ax.set_xlabel('x')
-		# ax.set_ylabel('y')
-		# ax.set_zlabel('z')
-		# plt.show()
-		# for i in range(iterations):
-		# 	data_index = [np.random.randint(0, velo_filt.shape[0], size=3)]
-		# 	data = np.array(velo_filt[tuple(data_index)])
-		# 	print(data.shape)
-		# 	a,b,c,d = equation_plane(data[0,0],data[0,1],data[0,2],data[1,0],data[1,1],data[1,2],data[2,0],data[2,1],data[2,2])
-		# 	for element in velo_filt
-		# 	check_plane(a, b, c, d, element[0], element[1], element[2])
-
-		 # Read the i th frame from the sequence
-		# fig = mayavi.mlab.figure(bgcolor=(0, 0, 0), size=(640, 360))
-		# mayavi.mlab.points3d(velo[:,0], velo[:,1], velo[:,2],mode="point",colormap='spectral', # 'bone', 'copper', 'gnuplot'# color=(0, 1, 0),
-		# 					figure=fig,)
-		                         
-		# mayavi.mlab.show()
-		# pointcloud = np.fromfile(str("000010.bin"), dtype=np.float32, count=-1).reshape([-1,4])
-		# im = top.point_cloud_2_birdseye(velo)
-		# im2 = Image.fromarray(im)
-		# im2.save('/home/nive/newimages/figure'+str(i)+'.png')
-		# print(i, velo_filt.shape, velo.shape)
+		
