@@ -12,7 +12,6 @@ fshift1 = np.fft.fftshift(f1)
 magnitude_spectrum1 = np.log(np.abs(fshift1) +1)
 polar_map1= cv2.logPolar(magnitude_spectrum1, (cx/2,cy/2), cx/np.log(cx), flags=cv2.INTER_LINEAR+cv2.WARP_FILL_OUTLIERS)
 
-
 img2 = cv2.imread('./input images/figure2.png',0)
 img2 = img2 * hanw
 f2 = np.fft.fft2(img2)
@@ -25,7 +24,6 @@ R /= np.absolute(R)
 r = np.fft.fftshift(np.fft.ifft(R).real)
 r = np.asarray(r)
 r=r.reshape(cx,cy)
-# print(r.shape)
 DY,DX = np.unravel_index(r.argmax(), r.shape)
 
 plt.subplot(331),plt.imshow(img1, cmap = 'gray')
@@ -45,6 +43,5 @@ plt.title('Magnitude Spectrum'), plt.xticks([]), plt.yticks([])
 
 plt.subplot(336),plt.imshow(polar_map2, cmap = 'gray')
 plt.title('Polar map2'), plt.xticks([]), plt.yticks([])
-# for i in range(-1000,1000):
-# 	plt.plot(i,s[i+1000],'ro')
+
 plt.show()
