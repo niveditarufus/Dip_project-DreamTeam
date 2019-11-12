@@ -11,51 +11,31 @@ warnings.filterwarnings("ignore",
 
 
 def fourier_zoom(image, z=2):
-    """
-    Zoom an image by zero-padding its Discrete Fourier transform.
-    Args:
-        image (np.ndarray): 2D grid of pixel values.
-        z (int): Factor by which to multiply the dimensions of the image. Must be >= 1.
-    Returns:
-        np.ndarray: zoomed image.
-    """
     h, w = image.shape
 
-    # zero padding sizes
     left = np.ceil((z - 1) * w / 2).astype(int)
     right = np.floor((z - 1) * w / 2).astype(int)
     top = np.ceil((z - 1) * h / 2).astype(int)
     bottom = np.floor((z - 1) * h / 2).astype(int)
 
-    # Fourier transform with the zero-frequency component at the center
     ft = np.fft.fftshift(np.fft.fft2(image))
 
-    # the zoom-in is performed by zero padding the Fourier transform
     ft = np.pad(ft, [(top, bottom), (left, right)], 'constant', constant_values=0+0j)
 
-    # apply ifftshift before taking the inverse Fourier transform
     out = np.fft.ifft2(np.fft.ifftshift(ft))
 
-    # if the input is a real-valued image, then keep only the real part
     if np.isrealobj(image):
         out = np.real(out)
 
-    # to preserve the values of the original samples, the L2 norm has to be
-    # multiplied by z*z.
     return out * z * z
 
 
 def _test_fourier_zoom(w, h, z=2):
-    """
-    """
-    # image with random float values between -1000 and +1000
     image = (2 * np.random.random((h, w)) - 1) * 1e3
 
     zoomed_image = fourier_zoom(image, z)
 
-    # the pixel values of the zoomed image at positions (0, 0), (0, z), (0,
-    # 2*z), ..., (z, 0), (z, z), ... should be equal to the original image
-    # values
+    
     np.testing.assert_allclose(zoomed_image[::z, ::z], image)
 
 
@@ -69,15 +49,7 @@ def test_fourier_zoom():
 
 
 def rasterio_write(path, array, profile={}, tags={}):
-    """
-    Write a numpy array in a tiff or png file with rasterio.
-    Args:
-        path (str): path to the output tiff/png file
-        array (numpy array): 2D or 3D array containing the image to write.
-        profile (dict): rasterio profile (ie dictionary of metadata)
-        tags (dict): dictionary with additional geotiff tags
-    """
-    # determine the driver based on the file extension
+    
     extension = os.path.splitext(path)[1].lower()
     if extension in ['.tif', '.tiff']:
         driver = 'GTiff'
