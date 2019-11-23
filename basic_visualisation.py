@@ -25,6 +25,3 @@ polar_map1 = cv2.warpAffine(polar_map1, M90, (cx, cy))
 cv2.imwrite('./output/log_mag1.png',log_magnitude_spectrum1)
 cv2.imwrite('./output/mag1.png',magnitude_spectrum1)
 cv2.imwrite('./output/polar_map1.png',polar_map1)
-
-
-
