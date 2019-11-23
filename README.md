@@ -7,4 +7,5 @@ Nagashima, Sei & Ito, Koichi & Aoki, Takafumi & Ishii, Hideaki & Kobayashi, Koji
 
 Directory structure:
 input images : This folder contains all the input images used in the code. Any images can that required to be tested should be put in this folder.
-*All outputs can be visualised in the jupyter notebook itself. Clear descriptions are made in respective markdowns. These descriptions are taken from the paper cited above
+
+*All outputs can be visualised in the jupyter notebook itself. Clear descriptions are made in respective markdowns. These descriptions are taken from the paper cited above*
