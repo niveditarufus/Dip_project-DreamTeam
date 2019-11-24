@@ -3,7 +3,7 @@ from PIL import Image
 import numpy as np
 from matplotlib import pyplot as plt
 #importing images
-img1 = cv2.imread('./input images/figure1.png',0)
+img1 = cv2.imread('./input images/facebook.png',0)
 cx,cy = img1.shape
 #generate a hanning window
 hanw = cv2.createHanningWindow((cx,cy),cv2.CV_64F)
