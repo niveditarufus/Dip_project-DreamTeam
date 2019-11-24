@@ -9,17 +9,17 @@ Nagashima, Sei & Ito, Koichi & Aoki, Takafumi & Ishii, Hideaki & Kobayashi, Koji
 Directory structure:
 
 
-├── input images		# Folder to store inputs
-├── output			# Folder to store the outputs
-├── papers              	# Papers and Documentation
-│   ├── paper.pdf            	# Conference paper
-│   └── paperv1.pdf          	# Conference paper
-├── Presentation             	# Presnentation
-│   └── presentation.pdf        # PPT
-├── Report              	# Report
-│   └── report.pdf     		# Report of the Implementation
-├── rotated             	# Images rotated with different angles
-├── basic_visualisation.py	# Reads inputs from 'input images' and stores in 'output'
+├── input images		# Folder to store inputs\
+├── output			# Folder to store the outputs\
+├── papers              	# Papers and Documentation\
+│   ├── paper.pdf            	# Conference paper\
+│   └── paperv1.pdf          	# Conference paper\
+├── Presentation             	# Presnentation\
+│   └── presentation.pdf        # PPT\
+├── Report              	# Report\
+│   └── report.pdf     		# Report of the Implementation\
+├── rotated             	# Images rotated with different angles\
+├── basic_visualisation.py	# Reads inputs from 'input images' and stores in 'output'\
 └── dip_project.ipynb		# Implementation of paper
 
 Files:
