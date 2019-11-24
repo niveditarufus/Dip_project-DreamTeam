@@ -5,7 +5,22 @@ https://link.springer.com/content/pdf/10.1007%2F978-3-540-74260-9_19.pdf?fbclid=
 
 Nagashima, Sei & Ito, Koichi & Aoki, Takafumi & Ishii, Hideaki & Kobayashi, Koji. (2009). High-Accuracy Estimation of Image Rotation Using 1D Phase-Only Correlation. IEICE Transactions. 92-A. 235-243. 10.1587/transfun.E92.A.235.
 
+
 Directory structure:
+
+
+├── input images		# Folder to store inputs
+├── output			# Folder to store the outputs
+├── papers              	# Papers and Documentation
+│   ├── paper.pdf            	# Conference paper
+│   └── paperv1.pdf          	# Conference paper
+├── Presentation             	# Presnentation
+│   └── presentation.pdf        # PPT
+├── Report              	# Report
+│   └── report.pdf     		# Report of the Implementation
+├── rotated             	# Images rotated with different angles
+├── basic_visualisation.py	# Reads inputs from 'input images' and stores in 'output'
+└── dip_project.ipynb		# Implementation of paper
 
 Files:
 basic_visualisation.py : This file takes input from 'input images'folder and writes the output in 'output' folder
