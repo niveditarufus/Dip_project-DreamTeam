@@ -20,7 +20,7 @@ Directory structure:
 │   └── report.pdf     		# Report of the Implementation\
 ├── rotated             	# Images rotated with different angles\
 ├── basic_visualisation.py	# Reads inputs from 'input images' and stores in 'output'\
-└── dip_project.ipynb		# Implementation of paper\
+└── dip_project.ipynb		# Implementation of paper
 
 Files:
 basic_visualisation.py : This file takes input from 'input images'folder and writes the output in 'output' folder
